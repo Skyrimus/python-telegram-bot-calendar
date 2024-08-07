@@ -106,7 +106,7 @@ class TelegramCalendar:
         if pyrogram:
              def inn(client, callback):
                 start = CB_CALENDAR + "_" + str(calendar_id)
-                return client, callback.decode("utf-8").startswith(start)
+                return client, callback.data.startswith(start)
         else:
             def inn(callback):
                 start = CB_CALENDAR + "_" + str(calendar_id)
