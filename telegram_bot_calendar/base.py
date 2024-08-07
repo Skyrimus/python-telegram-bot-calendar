@@ -157,6 +157,7 @@ class TelegramCalendar:
         if self.telethon:
             return buttons
         if self.pyrogram:
+            print("pyrogram keyboard")
             return InlineKeyboardMarkup(buttons)
         return self._build_json_keyboard(buttons)
 
