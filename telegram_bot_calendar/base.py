@@ -102,10 +102,10 @@ class TelegramCalendar:
         }
 
     @staticmethod
-    def func(calendar_id=0, telethon=False, pyrogram=False):
+    def func(calendar_id=0, telethon=False):
         def inn(callback):
             start = CB_CALENDAR + "_" + str(calendar_id)
-            return callback.decode("utf-8").startswith(start) if telethon or pyrogram else callback.data.startswith(start)
+            return callback.decode("utf-8").startswith(start) if telethon else callback.data.startswith(start)
 
         return inn
 
