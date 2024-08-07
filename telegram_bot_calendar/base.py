@@ -6,7 +6,7 @@ from datetime import date
 from dateutil.relativedelta import relativedelta
 
 try:
-    from pyrogram import InlineKeyboardButton, InlineKeyboardMarkup
+    from pyrogram import (InlineKeyboardButton, InlineKeyboardMarkup)
 
     PYROGRAM_INSTALLED = True
 except ImportError:
@@ -146,6 +146,7 @@ class TelegramCalendar:
         if self.telethon:
             return Button.inline(text=str(text), data=self._build_callback(action, step, data, is_random=is_random))
         elif self.pyrogram:
+            print("inline button pyrogram")
             return InlineKeyboardButton(str(text), callback_data=self._build_callback(action, step, data, is_random=is_random))
         else:
             return {
