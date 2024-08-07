@@ -78,7 +78,7 @@ class TelegramCalendar:
         self.pyrogram = pyrogram
         if self.pyrogram and not PYROGRAM_INSTALLED:
             raise ImportError(
-                "Знкщпкфь is not installed. Please install pyrogram")
+                "Pyrogram is not installed. Please install pyrogram")
         if self.telethon and not TELETHON_INSTALLED:
             raise ImportError(
                 "Telethon is not installed. Please install telethon or use pip install python-telegram-bot-calendar[telethon]")
