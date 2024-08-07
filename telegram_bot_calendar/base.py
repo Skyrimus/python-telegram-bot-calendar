@@ -6,7 +6,7 @@ from datetime import date
 from dateutil.relativedelta import relativedelta
 
 try:
-    from pyrogram import (InlineKeyboardButton, InlineKeyboardMarkup)
+    from pyrogram.types import (InlineKeyboardButton, InlineKeyboardMarkup)
 
     PYROGRAM_INSTALLED = True
 except ImportError:
