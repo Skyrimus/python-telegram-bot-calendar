@@ -102,10 +102,10 @@ class TelegramCalendar:
         }
 
     @staticmethod
-    def func(calendar_id=0, telethon=False):
+    def func(calendar_id=0, telethon=False, pyrogram=False):
         def inn(callback):
             start = CB_CALENDAR + "_" + str(calendar_id)
-            return callback.decode("utf-8").startswith(start) if telethon else callback.data.startswith(start)
+            return callback.decode("utf-8").startswith(start) if telethon or pyrogram else callback.data.startswith(start)
 
         return inn
 
@@ -145,14 +145,13 @@ class TelegramCalendar:
     def _build_button(self, text, action, step=None, data=None, is_random=False, **kwargs):
         if self.telethon:
             return Button.inline(text=str(text), data=self._build_callback(action, step, data, is_random=is_random))
-        elif self.pyrogram:
+        if self.pyrogram:
             print("inline button pyrogram")
             return InlineKeyboardButton(str(text), callback_data=self._build_callback(action, step, data, is_random=is_random))
-        else:
-            return {
-                'text': text,
-                'callback_data': self._build_callback(action, step, data, is_random=is_random)
-            }
+        return {
+            'text': text,
+            'callback_data': self._build_callback(action, step, data, is_random=is_random)
+        }
 
     def _build_keyboard(self, buttons):
         if self.telethon:
